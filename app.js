@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 const{v4: uuidv4} = require("uuid");
 
+let methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
+
 let posts = [{
     user:"hello_kitty",
     content:"hello i am kitty",
@@ -58,7 +62,7 @@ app.get("/posts/new",(req,res)=>{
 
 app.post("/posts/new",(req,res)=>{
     let {user,content} = req.body;
-    let id = uuidv4(); 
+    const id = uuidv4(); 
     posts.push({id,user,content});
     console.log(req.body);
     res.redirect("http://localhost:8080/posts");
@@ -66,7 +70,7 @@ app.post("/posts/new",(req,res)=>{
 
 app.get("/posts/:id",(req,res)=>{
 
-    let {id} = req.params;
+    const {id} = req.params;
     console.log(id);
     let post = posts.find((p) => id===p.id);
     console.log(post);
@@ -74,3 +78,18 @@ app.get("/posts/:id",(req,res)=>{
 
 });
   
+app.patch("/posts/:id",(req,res)=>{
+    const {id} = req.params;
+    let post = posts.find((p)=>id===p.id);
+    let newContent  = req.body.content;
+    post.content = newContent;
+    console.log(newContent);
+    res.redirect("/posts");
+})
+
+app.get("/posts/:id/edit",(req,res)=>{
+    const {id} = req.params;
+    let post = posts.find((p) => id===p.id);
+    res.render("edit.ejs", {post});
+});
+
