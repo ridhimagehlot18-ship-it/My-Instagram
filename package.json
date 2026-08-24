@@ -1,0 +1,17 @@
+{
+  "name": "myinsta",
+  "version": "1.0.0",
+  "description": "my isntagram page",
+  "license": "ISC",
+  "author": "RidhimaGehlot",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "uuid": "^14.0.2"
+  }
+}
