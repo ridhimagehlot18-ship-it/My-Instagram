@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Posts</title>
     <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-    <h1>My Instagram</h1>
+    <h1>My  <i class="fa-brands fa-instagram"></i></h1>
   
         <% for(post of posts) { %>   
         <div class="indp">
@@ -15,10 +18,11 @@
         <p><b><%=post.user%></b></p>
         <p><%=post.content%></p>
         <img src="<%=post.img%>" alt="this is image"><br>
-        <a href="http://localhost:8080/posts/<%=post.id%>">Show this in Detail</a>
-       <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a>
+        <a href="http://localhost:8080/posts/<%=post.id%>">Click to Show this in Detail</a><br>
+       <a href="http://localhost:8080/posts/<%=post.id%>/edit">Click to Edit post</a><br>
+       <form method="post" action="/posts/<%=post.id%>?_method=DELETE"><button>Delete</button></form>
         </div>
          <%}%>
-        <a href="http://localhost:8080/posts/new">Create a new Post</a>
+        <a href="http://localhost:8080/posts/new"> Click to Create a new Post</a>
 </body>
 </html>
