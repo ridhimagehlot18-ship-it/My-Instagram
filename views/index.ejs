@@ -12,9 +12,8 @@
 <body>
     <h1>My  <i class="fa-brands fa-instagram"></i></h1>
   
-        <% for(post of posts) { %>   
+        <% for(post of allPosts) { %>   
         <div class="indp">
-        <p>id:<%=post.id%></p>
         <p><b><%=post.user%></b></p>
         <p><%=post.content%></p>
         <img src="<%=post.img%>" alt="this is image"><br>
